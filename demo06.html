@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>demo 6</title>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/browser.min.js"></script>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script type="text/babel">
+        var data=123;
+        
+        var MyTitle=React.createClass({
+            propTypes: {
+                // title 属性是必须的，而且它的值必须是字符串
+                title: React.PropTypes.string.isRequired,   
+            },
+
+            render:function(){
+                return <h1>{this.props.title}</h1>;
+            }
+        });
+        ReactDOM.render(
+           <MyTitle title={data} />,
+            document.getElementById('demo')
+        );
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>组件与用户互动</title>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/browser.min.js"></script>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script type="text/babel">
+       var LikeButton=React.createClass({       
+           //定义初始状态，也就是一个对象
+           //这个对象可以通过this.state 属性读取，当用户点击组件，导致状态变化
+           getInitialState:function () {          
+               return {liked:false};
+            },
+            handleClick:function(event) {             
+                //this.setState 方法就修改状态值，每次修改以后，自动调用 this.render 方法，再次渲染组件
+                this.setState({liked: !this.state.liked});
+            },
+            render:function(){
+
+                //this.props 表示那些一旦定义，就不再改变的特性
+                //而 this.state 是会随着用户互动而产生变化的特性。
+                var text=this.state.liked? 'like' : 'haven\'t liked';
+                return (
+                    <p onClick={this.handleClick}>
+                        You {text} this. Click to toggle.
+                    </p>
+                );
+            }
+        }); 
+        
+        ReactDOM.render(
+           <LikeButton />,
+            document.getElementById('demo')
+        );
+    </script>
+
+</body>
+
+</html>

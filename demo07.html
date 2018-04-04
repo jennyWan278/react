@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从组件获取真实dom的节点</title>
+    <script src="react/react.js"></script>
+    <script src="react/react-dom.js"></script>
+    <script src="react/browser.min.js"></script>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script type="text/babel">
+        var MyComponent=React.createClass({
+            handleClick:function(){
+                this.refs.myTextInput.focus();    /* 将虚拟dom的值返回给真实的dom */
+            },
+            render:function(){
+                return (
+                    <div>
+                        <input type="text" ref="myTextInput" />
+                        <input type="button" value="Focus the text input" onclick={this.handleClick} />
+                    </div>
+                );
+            }
+        });
+        
+        ReactDOM.render(
+           <MyComponent />,
+            document.getElementById('demo')
+        );
+    </script>
+
+</body>
+
+</html>
